@@ -5,7 +5,7 @@ import { Layout } from './layout';
 import { Counter, counterReducer } from './counter';
 
 const reducer = combineReducers({
-  counter: counterReducer
+  counters: counterReducer
 });
 
 const store = createStore(reducer,
@@ -18,7 +18,12 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Layout>
-          <Counter />
+          <Counter id="counter-1" />
+          <Counter id="counter-2" />
+          <Counter id="counter-3" />
+          <Counter id="counter-4" />
+          <Counter id="counter-5" />
+          <Counter id="counter-6" />
         </Layout>
       </Provider>
     );

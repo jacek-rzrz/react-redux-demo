@@ -9,24 +9,28 @@ export class HomePage {
     this.screen = mount(<App />);
   }
 
-  getCounter() {
+  getCounters() {
     return this.screen.find(Counter);
   }
 
-  getCounterValue() {
-    return this.getCounter()
+  getCounter(dataQa) {
+    return this.screen.find(`[data-qa="${dataQa}"]`);
+  }
+
+  getCounterValue(dataQa) {
+    return this.getCounter(dataQa)
       .find('[data-qa="counter-value"]')
       .text();
   }
 
-  clickCounterIncrement() {
-    return this.getCounter()
+  clickCounterIncrement(dataQa) {
+    return this.getCounter(dataQa)
       .find('[data-qa="counter-increment"]')
       .simulate('click');
   }
 
-  clickCounterDecrement() {
-    return this.getCounter()
+  clickCounterDecrement(dataQa) {
+    return this.getCounter(dataQa)
       .find('[data-qa="counter-decrement"]')
       .simulate('click');
   }
