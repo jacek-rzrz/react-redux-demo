@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import { Layout } from './layout';
+import { Counter, counterReducer } from './counter';
+
+const reducer = combineReducers({
+  counter: counterReducer
+});
+
+const store = createStore(reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 class App extends Component {
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Provider store={store}>
+        <Layout>
+          <Counter />
+        </Layout>
+      </Provider>
     );
   }
 }
