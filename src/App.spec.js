@@ -11,17 +11,18 @@ describe('App', () => {
       homePage = new HomePage();
     });
 
-    it('renders an interactable counter', () => {
-      let counterValue = homePage.getCounterValue();
-      expect(counterValue).toBe('0');
+    it('renders interactable counters', () => {
+      expect(homePage.getCounters()).toHaveLength(6);
+      expect(homePage.getCounterValue('counter-3')).toBe('0');
 
-      homePage.clickCounterIncrement();
-      homePage.clickCounterIncrement();
-      homePage.clickCounterIncrement();
-      homePage.clickCounterDecrement();
+      homePage.clickCounterIncrement('counter-3');
+      homePage.clickCounterIncrement('counter-4');
+      homePage.clickCounterIncrement('counter-3');
+      homePage.clickCounterIncrement('counter-3');
+      homePage.clickCounterDecrement('counter-3');
 
-      counterValue = homePage.getCounterValue();
-      expect(counterValue).toBe('2');
+      expect(homePage.getCounterValue('counter-3')).toBe('2');
+      expect(homePage.getCounterValue('counter-4')).toBe('1');
     });
   });
 });

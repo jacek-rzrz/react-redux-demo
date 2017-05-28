@@ -29,6 +29,8 @@ html, body, #root, .layout {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-flow: row;
+  flex-wrap: wrap;
 }
 
 @keyframes App-logo-spin {
@@ -38,6 +40,11 @@ html, body, #root, .layout {
 
 .counter {
   font-size: 5em;
+  margin: 10px 80px;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .counter button {

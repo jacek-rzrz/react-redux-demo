@@ -1,11 +1,25 @@
-import { increment, decrement } from '.';
+import {
+  increment,
+  decrement,
+} from '.';
 
-export const counterReducer = (state=0, action) => {
+export const counterReducer = (state={}, action) => {
+
+  const add = delta => {
+    const key = action.payload;
+    const value = state[key] || 0;
+    const newValue = Math.max(0, value + delta);
+    return {
+      ...state,
+      [key]: newValue
+    };
+  };
+
   switch (action.type) {
     case increment.type:
-      return state + 1;
+      return add(1);
     case decrement.type:
-      return Math.max(0, state - 1);
+      return add(-1);
     default:
       return state;
   }
