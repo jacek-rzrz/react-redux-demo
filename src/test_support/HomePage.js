@@ -1,38 +1,17 @@
-import React from 'react';
-import { mount } from 'enzyme';
-import App from '../App';
 import { Counter } from '../counter';
 
 export class HomePage {
 
-  constructor() {
-    this.screen = mount(<App />);
+  constructor(screen) {
+    this.screen = screen;
   }
 
-  getCounters() {
-    return this.screen.find(Counter);
+  isCurrent() {
+    return this.screen.find('[data-qa="home-page"]');
   }
 
-  getCounter(dataQa) {
-    return this.screen.find(`[data-qa="${dataQa}"]`);
+  clickCountersLink() {
+    this.screen.find('[data-qa="counters-link"]')
+      .simulate('click', {button: 0});
   }
-
-  getCounterValue(dataQa) {
-    return this.getCounter(dataQa)
-      .find('[data-qa="counter-value"]')
-      .text();
-  }
-
-  clickCounterIncrement(dataQa) {
-    return this.getCounter(dataQa)
-      .find('[data-qa="counter-increment"]')
-      .simulate('click');
-  }
-
-  clickCounterDecrement(dataQa) {
-    return this.getCounter(dataQa)
-      .find('[data-qa="counter-decrement"]')
-      .simulate('click');
-  }
-
 }

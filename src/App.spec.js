@@ -1,28 +1,40 @@
-import { HomePage } from './test_support/HomePage';
+import React from 'react';
+import { mount } from 'enzyme';
+import App from './App';
+import { HomePage, CountersPage } from './test_support';
 import { Counter } from './counter';
 
 describe('App', () => {
+  let screen;
+  let homePage;
 
-  describe('Home page', () => {
+  beforeEach(() => {
+    screen = mount(<App />);
+    homePage = new HomePage(screen);
+  });
 
-    let homePage;
+  describe('Counters page', () => {
+
+    let countersPage;
 
     beforeEach(() => {
-      homePage = new HomePage();
+      countersPage = new CountersPage(screen);
+      homePage.clickCountersLink();
+      expect(countersPage.isCurrent()).toBe(true);
     });
 
     it('renders interactable counters', () => {
-      expect(homePage.getCounters()).toHaveLength(6);
-      expect(homePage.getCounterValue('counter-3')).toBe('0');
+      expect(countersPage.getCounters()).toHaveLength(6);
+      expect(countersPage.getCounterValue('counter-3')).toBe('0');
 
-      homePage.clickCounterIncrement('counter-3');
-      homePage.clickCounterIncrement('counter-4');
-      homePage.clickCounterIncrement('counter-3');
-      homePage.clickCounterIncrement('counter-3');
-      homePage.clickCounterDecrement('counter-3');
+      countersPage.clickCounterIncrement('counter-3');
+      countersPage.clickCounterIncrement('counter-4');
+      countersPage.clickCounterIncrement('counter-3');
+      countersPage.clickCounterIncrement('counter-3');
+      countersPage.clickCounterDecrement('counter-3');
 
-      expect(homePage.getCounterValue('counter-3')).toBe('2');
-      expect(homePage.getCounterValue('counter-4')).toBe('1');
+      expect(countersPage.getCounterValue('counter-3')).toBe('2');
+      expect(countersPage.getCounterValue('counter-4')).toBe('1');
     });
   });
 });
