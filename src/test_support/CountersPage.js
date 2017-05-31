@@ -10,7 +10,7 @@ export class CountersPage {
   }
 
   isCurrent() {
-    return this.screen.find('[data-qa="counters-page"]').exists();
+    return this.screen.find(Counter).exists();
   }
 
   getCounters() {

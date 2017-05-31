@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router';
 import logo from './logo.svg';
 
-export const Layout = ({children, dataQa}) => (
-  <div className="layout" data-qa={dataQa}>
+export const Layout = ({children}) => (
+  <div className="layout">
     <div className="header">
-      <img src={logo} className="logo" alt="logo" />
+      <Link to="/">
+        <img src={logo} className="logo" alt="logo" />
+      </Link>
     </div>
-    <div className="content">
-      {children}
-    </div>
+    {children}
   </div>
 );

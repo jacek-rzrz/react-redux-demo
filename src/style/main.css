@@ -8,10 +8,14 @@ html, body, #root, .layout {
   height: 100%;
 }
 
-a {
+.content-home a {
   color: #000;
   text-transform: uppercase;
   font-size: 2.5em;
+}
+
+a:visited {
+  color: inherit;
 }
 
 a:hover {
@@ -34,13 +38,36 @@ a:hover {
   padding: 20px;
 }
 
-.content {
+.content-home {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row;
+}
+
+.content-home a {
+  flex: 1;
+}
+
+.content-counters {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-flow: row;
   flex-wrap: wrap;
+}
+
+.content-sign-up {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 60px;
+}
+
+.content-sign-up form {
+  margin-top: 60px;
 }
 
 @keyframes App-logo-spin {
@@ -65,4 +92,74 @@ a:hover {
   cursor: pointer;
   font-weight: bold;
   font-size: 1em;
+}
+
+form {
+  align-self: center;
+}
+
+.form-item {
+  display: table-row;
+}
+
+.form-item > * {
+  display: table-cell;
+}
+
+.form-item label {
+  text-align: right;
+  padding: 10px;
+}
+
+.form-item input {
+  border: none;
+  border-bottom: 1px solid grey;
+  outline: none;
+  width: 300px;
+  font-size: 1em;
+}
+
+.sign-up-progress {
+  display: flex;
+  justify-content: center;
+}
+
+.sign-up-progress > * {
+  width: 100px;
+  height: 25px;
+}
+
+.sign-up-progress .current {
+  font-weight: bold;
+}
+
+button {
+  background-color: #61DAFB;
+  color: black;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  float: left;
+  margin-top: 10px;
+  font-weight: bold;
+  outline: none;
+}
+
+button[disabled] {
+  color: #555;
+  cursor: default;
+}
+
+.summary {
+  display: table;
+  margin: 0 auto;
+}
+
+.summary > div {
+  display: table-row;
+}
+
+.summary span {
+  display: table-cell;
 }
