@@ -10,7 +10,9 @@ describe('Counter', () => {
 
   beforeEach(() => {
     store = mockStore({
-      mycounter: 7
+      counters: {
+        mycounter: 7
+      }
     });
   });
 

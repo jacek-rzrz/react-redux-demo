@@ -11,7 +11,7 @@ const renderCounter = props => (
 );
 
 const mapStateToProps = (state, props) => ({
-  value: state[props.id] || 0
+  value: state.counters[props.id] || 0
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
