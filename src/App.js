@@ -8,6 +8,7 @@ import { CountersPage, counterReducer } from './counter';
 import { HomePage } from './home';
 import { ContactForm, AddressForm, PaymentForm, Summary, reducer as signUpReducer } from './sign_up';
 import { Routes } from './constants';
+import { Styleguide } from './styleguide/Styleguide'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -38,6 +39,7 @@ class App extends Component {
           <Route path={Routes.SIGN_UP_ADDRESS} component={AddressForm} />
           <Route path={Routes.SIGN_UP_PAYMENT} component={PaymentForm} />
           <Route path={Routes.SIGN_UP_SUMMARY} component={Summary} />
+          <Route path={Routes.STYLE_GUIDE} component={Styleguide} />
           <Route path="/" component={HomePage} />
         </Router>
       </Provider>
